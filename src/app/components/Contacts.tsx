@@ -158,7 +158,7 @@ export function Contacts() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-[14px] font-medium mb-2">
+                  <label htmlFor="name" className="block text-[14px] font-medium mb-2 ">
                     Имя <span className="text-destructive">*</span>
                   </label>
                   <input
@@ -166,7 +166,7 @@ export function Contacts() {
                     type="text"
                     value={formData.name}
                     onChange={(e) => handleChange('name', e.target.value)}
-                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all ${
+                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all text-gray-400 ${
                       errors.name 
                         ? 'border-destructive focus:border-destructive focus:ring-2 focus:ring-destructive/20' 
                         : 'border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20'
@@ -191,7 +191,7 @@ export function Contacts() {
                     type="text"
                     value={formData.contact}
                     onChange={(e) => handleChange('contact', e.target.value)}
-                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all ${
+                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all text-gray-400 ${
                       errors.contact 
                         ? 'border-destructive focus:border-destructive focus:ring-2 focus:ring-destructive/20' 
                         : 'border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20'
@@ -215,7 +215,7 @@ export function Contacts() {
                     id="topic"
                     value={formData.topic}
                     onChange={(e) => handleChange('topic', e.target.value)}
-                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all ${
+                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all text-gray-400 ${
                       errors.topic 
                         ? 'border-destructive focus:border-destructive focus:ring-2 focus:ring-destructive/20' 
                         : 'border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20'
@@ -244,7 +244,7 @@ export function Contacts() {
                     value={formData.message}
                     onChange={(e) => handleChange('message', e.target.value)}
                     rows={5}
-                    className={`w-full px-4 py-3 rounded-xl bg-input-background border transition-all resize-none ${
+                    className={`w-full px-4 py-3 rounded-xl bg-input-background border transition-all resize-none text-gray-400 ${
                       errors.message 
                         ? 'border-destructive focus:border-destructive focus:ring-2 focus:ring-destructive/20' 
                         : 'border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20'
