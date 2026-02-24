@@ -1,26 +1,46 @@
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Target, Rocket, BookOpen, Lightbulb } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useInView } from '../hooks/useInView';
 
 export function Experience() {
   const { ref, isInView } = useInView({ threshold: 0.2 });
   const roles = [
-    'Определение стратегии цифровой трансформации и технологического развития компании',
-    'Управление внедрением BIM-процессов и координация междисциплинарных команд',
-    'Разработка внутренних стандартов, методологий и обучающих программ',
-    'Консультирование клиентов по оптимизации проектных и строительных процессов'
+    {
+      text: 'Стратегия цифровой трансформации и технологического развития',
+      icon: Target,
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      text: 'Внедрение BIM-процессов, координация команд',
+      icon: Rocket,
+      color: 'from-purple-500 to-pink-500'
+    },
+    {
+      text: 'Разработка стандартов, методологий, обучающих программ',
+      icon: BookOpen,
+      color: 'from-orange-500 to-red-500'
+    },
+    {
+      text: 'Консалтинг по оптимизации проектных процессов',
+      icon: Lightbulb,
+      color: 'from-green-500 to-emerald-500'
+    }
   ];
 
   const companies = [
     {
       name: 'BIM Solutions Group',
-      description: 'Технологический консалтинг и внедрение BIM для крупных девелоперских и проектных компаний',
-      link: '#'
+      description: 'Технологический консалтинг и внедрение BIM для девелоперов',
+      link: '#',
+      role: 'Технический директор',
+      year: '2020 — н.в.'
     },
     {
       name: 'Digital Construction Lab',
-      description: 'R&D-центр, специализирующийся на инновационных решениях для цифровизации строительства',
-      link: '#'
+      description: 'R&D-центр инновационных решений для цифровизации',
+      link: '#',
+      role: 'Основатель',
+      year: '2018 — н.в.'
     }
   ];
 
@@ -47,22 +67,38 @@ export function Experience() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.21, 0.45, 0.27, 0.9] }}
           >
-            <ul className="space-y-4">
-              {roles.map((role, index) => (
-                <motion.li
-                  key={index}
-                  className="flex gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: [0.21, 0.45, 0.27, 0.9] }}
-                >
-                  <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
-                  <p className="text-[15px] md:text-[16px] leading-relaxed text-foreground/80">
-                    {role}
-                  </p>
-                </motion.li>
-              ))}
-            </ul>
+            <div className="grid grid-cols-1 gap-4">
+              {roles.map((role, index) => {
+                const Icon = role.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    className="group bg-card border border-border rounded-xl p-5 hover:border-primary/50 hover:shadow-lg transition-all duration-300 relative overflow-hidden"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: [0.21, 0.45, 0.27, 0.9] }}
+                    whileHover={{ x: 4, transition: { duration: 0.2 } }}
+                  >
+                    {/* Background gradient on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${role.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                    
+                    <div className="relative flex items-start gap-4">
+                      {/* Icon */}
+                      <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${role.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                      
+                      {/* Text */}
+                      <div className="flex-1 pt-1.5">
+                        <p className="text-[15px] md:text-[16px] leading-relaxed text-foreground/90 font-medium">
+                          {role.text}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </motion.div>
 
           {/* Companies */}
@@ -82,24 +118,40 @@ export function Experience() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1, ease: [0.21, 0.45, 0.27, 0.9] }}
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="bg-card border border-border rounded-xl p-5 hover:shadow-md transition-shadow duration-300"
+                  whileHover={{ y: -4, scale: 1.02, transition: { duration: 0.2 } }}
+                  className="group bg-gradient-to-br from-card to-card/50 border border-border rounded-xl p-5 hover:border-primary/50 hover:shadow-lg transition-all duration-300 relative overflow-hidden"
                 >
-                  <h4 className="text-[16px] font-semibold mb-2">
-                    {company.name}
-                  </h4>
-                  <p className="text-[14px] text-foreground/70 leading-relaxed mb-3">
-                    {company.description}
-                  </p>
-                  <a
-                    href={company.link}
-                    className="inline-flex items-center text-[14px] text-primary hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Открыть сайт
-                    <ExternalLink className="ml-1.5 w-3.5 h-3.5" />
-                  </a>
+                  {/* Background gradient on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  <div className="relative">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex-1">
+                        <h4 className="text-[16px] font-semibold mb-1">
+                          {company.name}
+                        </h4>
+                        <div className="flex items-center gap-2 text-[12px] text-foreground/60">
+                          <span className="font-medium text-primary">{company.role}</span>
+                          <span>•</span>
+                          <span>{company.year}</span>
+                        </div>
+                      </div>
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                        <ExternalLink className="w-4 h-4 text-primary" />
+                      </div>
+                    </div>
+                    <p className="text-[14px] text-foreground/70 leading-relaxed mb-3">
+                      {company.description}
+                    </p>
+                    <a
+                      href={company.link}
+                      className="inline-flex items-center text-[13px] text-primary hover:underline font-medium"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Открыть сайт →
+                    </a>
+                  </div>
                 </motion.div>
               ))}
             </div>

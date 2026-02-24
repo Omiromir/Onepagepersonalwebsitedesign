@@ -56,8 +56,7 @@ export function Hero({ onContactClick }: HeroProps) {
               variants={itemVariants}
               className="text-[17px] md:text-[18px] text-foreground/70 leading-relaxed mb-8 max-w-[560px]"
             >
-              Основатель и технический директор в области BIM и цифровизации строительства. 
-              Эксперт по внедрению передовых технологий проектирования и управления проектами в AEC-индустрии.
+              Технический директор и основатель. Внедряю BIM и цифровые технологии в строительные проекты.
             </motion.p>
 
             {/* Badges */}

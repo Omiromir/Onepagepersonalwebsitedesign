@@ -5,40 +5,40 @@ export function Projects() {
   const { ref, isInView } = useInView({ threshold: 0.1 });
   const projects = [
     {
-      context: 'Крупный жилой комплекс, 150 000 м²',
-      role: 'BIM-координатор проекта',
-      focus: 'Координация 8 проектных дисциплин, устранение коллизий, контроль сроков',
-      tools: ['Revit', 'Navisworks', 'BIM 360', 'Dynamo']
+      context: 'ЖК 150 000 м²',
+      role: 'BIM-координатор',
+      focus: 'Координация 8 дисциплин, устранение коллизий',
+      tools: ['Revit', 'Navisworks', 'BIM 360']
     },
     {
-      context: 'Международная девелоперская компания',
-      role: 'Консультант по цифровой трансформации',
-      focus: 'Аудит процессов, разработка BIM-стандартов, обучение 50+ специалистов',
-      tools: ['Стратегия', 'ISO 19650', 'Change Management']
+      context: 'Девелопер (международный)',
+      role: 'Консультант',
+      focus: 'Аудит, стандарты, обучение 50+ специалистов',
+      tools: ['ISO 19650', 'Change Management']
     },
     {
-      context: 'Офисный комплекс класса A, 80 000 м²',
-      role: 'Главный BIM-менеджер',
-      focus: 'Настройка CDE, интеграция с ERP, автоматизация рутинных задач',
-      tools: ['BIM 360', 'Revit', 'Power BI', 'API']
+      context: 'Офис класса A, 80 000 м²',
+      role: 'BIM-менеджер',
+      focus: 'CDE, интеграция с ERP, автоматизация',
+      tools: ['BIM 360', 'Power BI', 'API']
     },
     {
       context: 'Промышленный объект',
       role: 'Технический эксперт',
-      focus: 'Сложное MEP-моделирование, clash detection, as-built документация',
-      tools: ['Revit MEP', 'Navisworks', 'Point Cloud']
+      focus: 'MEP-моделирование, clash detection',
+      tools: ['Revit MEP', 'Navisworks']
     },
     {
-      context: 'Образовательный проект',
-      role: 'Разработчик программы обучения',
-      focus: 'Создание курса по BIM для проектировщиков, 120 часов теории и практики',
-      tools: ['Методология', 'Autodesk', 'Кейс-стади']
+      context: 'Образовательная программа',
+      role: 'Разработчик курса',
+      focus: 'BIM для проектировщиков, 120 часов',
+      tools: ['Методология', 'Кейс-стади']
     },
     {
-      context: 'Реконструкция исторического здания',
+      context: 'Реконструкция (историческое)',
       role: 'BIM-специалист',
-      focus: 'Создание as-is модели по лазерному сканированию, проектное решение',
-      tools: ['ReCap', 'Revit', '3D Scanning']
+      focus: 'As-is модель по сканированию, проект',
+      tools: ['ReCap', '3D Scanning']
     }
   ];
 
@@ -69,16 +69,24 @@ export function Projects() {
                 ease: [0.21, 0.45, 0.27, 0.9]
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="bg-card border border-border rounded-2xl p-6 hover:shadow-md transition-shadow duration-300"
+              className="group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300"
             >
-              <div className="space-y-4">
-                <div>
-                  <div className="text-[12px] uppercase tracking-wider text-foreground/50 font-medium mb-1">
-                    Контекст
+              {/* Accent bar */}
+              <div className="h-1.5 bg-gradient-to-r from-primary via-purple-500 to-pink-500"></div>
+              
+              <div className="p-6 space-y-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="text-[12px] uppercase tracking-wider text-foreground/50 font-medium mb-1">
+                      Контекст
+                    </div>
+                    <p className="text-[15px] text-foreground/90 font-medium">
+                      {project.context}
+                    </p>
                   </div>
-                  <p className="text-[15px] text-foreground/90">
-                    {project.context}
-                  </p>
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-[18px] font-bold text-primary">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
                 </div>
 
                 <div>
@@ -107,7 +115,7 @@ export function Projects() {
                     {project.tools.map((tool, toolIndex) => (
                       <span
                         key={toolIndex}
-                        className="inline-flex px-2.5 py-1 rounded-lg bg-secondary text-secondary-foreground text-[12px] font-medium"
+                        className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 text-foreground text-[12px] font-medium"
                       >
                         {tool}
                       </span>

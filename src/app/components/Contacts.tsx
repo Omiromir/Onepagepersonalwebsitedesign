@@ -84,7 +84,7 @@ export function Contacts() {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.21, 0.45, 0.27, 0.9] }}
           >
             <p className="text-[16px] text-foreground/70 leading-relaxed mb-8">
-              Свяжитесь со мной для консультаций, приглашений на выступления или обсуждения сотрудничества.
+              Консультации, выступления, сотрудничество.
             </p>
 
             <div className="space-y-3">
@@ -103,7 +103,7 @@ export function Contacts() {
                 </div>
                 <div className="flex-1">
                   <div className="text-[14px] font-medium">WhatsApp</div>
-                  <div className="text-[13px] text-foreground/60">Быстрый ответ</div>
+                  <div className="text-[13px] text-foreground/60">Быстро</div>
                 </div>
               </motion.a>
 
@@ -122,7 +122,7 @@ export function Contacts() {
                 </div>
                 <div className="flex-1">
                   <div className="text-[14px] font-medium">Telegram</div>
-                  <div className="text-[13px] text-foreground/60">Предпочтительный канал</div>
+                  <div className="text-[13px] text-foreground/60">Предпочтительно</div>
                 </div>
               </motion.a>
 
@@ -158,7 +158,7 @@ export function Contacts() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-[14px] font-medium mb-2 ">
+                  <label htmlFor="name" className="block text-[14px] font-medium mb-2">
                     Имя <span className="text-destructive">*</span>
                   </label>
                   <input
@@ -166,7 +166,7 @@ export function Contacts() {
                     type="text"
                     value={formData.name}
                     onChange={(e) => handleChange('name', e.target.value)}
-                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all text-gray-400 ${
+                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all ${
                       errors.name 
                         ? 'border-destructive focus:border-destructive focus:ring-2 focus:ring-destructive/20' 
                         : 'border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20'
@@ -191,7 +191,7 @@ export function Contacts() {
                     type="text"
                     value={formData.contact}
                     onChange={(e) => handleChange('contact', e.target.value)}
-                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all text-gray-400 ${
+                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all ${
                       errors.contact 
                         ? 'border-destructive focus:border-destructive focus:ring-2 focus:ring-destructive/20' 
                         : 'border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20'
@@ -215,7 +215,7 @@ export function Contacts() {
                     id="topic"
                     value={formData.topic}
                     onChange={(e) => handleChange('topic', e.target.value)}
-                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all text-gray-400 ${
+                    className={`w-full h-11 px-4 rounded-xl bg-input-background border transition-all ${
                       errors.topic 
                         ? 'border-destructive focus:border-destructive focus:ring-2 focus:ring-destructive/20' 
                         : 'border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20'
@@ -244,7 +244,7 @@ export function Contacts() {
                     value={formData.message}
                     onChange={(e) => handleChange('message', e.target.value)}
                     rows={5}
-                    className={`w-full px-4 py-3 rounded-xl bg-input-background border transition-all resize-none text-gray-400 ${
+                    className={`w-full px-4 py-3 rounded-xl bg-input-background border transition-all resize-none ${
                       errors.message 
                         ? 'border-destructive focus:border-destructive focus:ring-2 focus:ring-destructive/20' 
                         : 'border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20'

@@ -1,8 +1,16 @@
 import { motion } from 'motion/react';
 import { useInView } from '../hooks/useInView';
+import { TechStack } from './TechStack';
+import { Award, Building2, Users2 } from 'lucide-react';
 
 export function About() {
   const { ref, isInView } = useInView({ threshold: 0.2 });
+
+  const stats = [
+    { icon: Award, value: '10+', label: 'Лет опыта' },
+    { icon: Building2, value: '150K', label: 'м² проектов' },
+    { icon: Users2, value: '50+', label: 'Обучено специалистов' }
+  ];
 
   return (
     <section id="about" className="py-16 md:py-20 lg:py-24" ref={ref as any}>
@@ -19,49 +27,68 @@ export function About() {
           <div className="w-12 h-0.5 bg-primary"></div>
         </motion.div>
 
-        <div className="max-w-[800px]">
-          <div className="space-y-5 text-[16px] md:text-[17px] text-foreground/80 leading-relaxed">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.21, 0.45, 0.27, 0.9] }}
-            >
-              Более 10 лет работаю в области информационного моделирования зданий (BIM) и цифровой трансформации 
-              строительной отрасли. За это время прошел путь от BIM-специалиста до технического директора и основателя 
-              консалтинговых компаний, специализирующихся на внедрении передовых технологий в AEC-индустрии.
-            </motion.p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Left side - Stats */}
+          <motion.div
+            className="lg:col-span-4"
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.21, 0.45, 0.27, 0.9] }}
+          >
+            <div className="space-y-4">
+              {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: [0.21, 0.45, 0.27, 0.9] }}
+                    className="bg-card border border-border rounded-xl p-5 hover:border-primary/50 transition-colors duration-300"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-[24px] font-bold">{stat.value}</div>
+                        <div className="text-[13px] text-foreground/60">{stat.label}</div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.21, 0.45, 0.27, 0.9] }}
-            >
-              Мой подход основан на глубоком понимании как технологической, так и бизнес-стороны процессов. 
-              Помогаю компаниям не просто внедрять BIM, а выстраивать целостную стратегию цифровой трансформации, 
-              которая приносит измеримые результаты: сокращение сроков проектирования, снижение количества ошибок, 
-              повышение качества коммуникации между участниками проекта.
-            </motion.p>
+          {/* Right side - Text */}
+          <motion.div
+            className="lg:col-span-8"
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.21, 0.45, 0.27, 0.9] }}
+          >
+            <div className="space-y-5 text-[16px] md:text-[17px] text-foreground/80 leading-relaxed mb-8">
+              <p>
+                Прошел путь от BIM-специалиста до технического директора консалтинговых компаний. Выстраиваю стратегию цифровизации с измеримыми результатами: <span className="text-primary font-semibold">−30% времени</span> на проектирование, <span className="text-primary font-semibold">−40% ошибок</span>, прозрачная коммуникация команд.
+              </p>
+              <p>
+                Реализовал проекты от 1000 до 150 000 м². Консультирую девелоперов, проектные бюро, подрядчиков.
+              </p>
+            </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.21, 0.45, 0.27, 0.9] }}
-            >
-              Работал с проектами различного масштаба и сложности — от небольших объектов до крупных комплексов 
-              площадью более 150 000 м². Консультировал международные девелоперские компании, проектные бюро и 
-              строительные организации по вопросам внедрения BIM-процессов и оптимизации рабочих потоков.
-            </motion.p>
-
-            <motion.p
+            {/* Tech Stack */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.4, ease: [0.21, 0.45, 0.27, 0.9] }}
             >
-              Активно участвую в развитии профессионального сообщества: выступаю на конференциях, провожу обучающие 
-              программы, делюсь опытом с коллегами. Верю, что будущее строительной индустрии — в интеграции технологий 
-              и человеческой экспертизы.
-            </motion.p>
-          </div>
+              <div className="text-[13px] uppercase tracking-wider text-foreground/50 font-medium mb-4">
+                Технологический стек
+              </div>
+              <TechStack />
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

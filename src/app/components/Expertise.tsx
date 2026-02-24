@@ -1,90 +1,190 @@
 import { motion } from 'motion/react';
 import { useInView } from '../hooks/useInView';
+import { Cuboid, Target, FileSearch, Users, GraduationCap, FileCode, Layers, BarChart3, Cloud, Lightbulb, ChevronLeft, ChevronRight } from 'lucide-react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { useRef } from 'react';
 
 export function Expertise() {
   const { ref, isInView } = useInView({ threshold: 0.1 });
+  const sliderRef = useRef<Slider>(null);
+
   const expertiseAreas = [
     {
       title: 'BIM-моделирование',
-      description: 'Разработка и координация сложных информационных моделей зданий. Стандартизация процессов моделирования и контроль качества.'
+      description: 'Координация информационных моделей, стандартизация процессов, контроль качества.',
+      icon: Cuboid,
+      color: 'from-blue-500 to-cyan-500'
     },
     {
       title: 'Цифровая трансформация',
-      description: 'Стратегическое планирование и внедрение цифровых технологий в строительные компании. Аудит текущих процессов и roadmap развития.'
+      description: 'Стратегия внедрения технологий, аудит процессов, roadmap развития.',
+      icon: Target,
+      color: 'from-purple-500 to-pink-500'
     },
     {
       title: 'Консалтинг и аудит',
-      description: 'Экспертная оценка BIM-процессов, анализ эффективности рабочих процессов. Рекомендации по оптимизации и стандартизации.'
+      description: 'Оценка BIM-процессов, оптимизация workflow, внедрение стандартов.',
+      icon: FileSearch,
+      color: 'from-orange-500 to-red-500'
     },
     {
       title: 'Управление проектами',
-      description: 'Координация междисциплинарных команд, контроль сроков и качества. Внедрение методологий Lean и Agile в строительстве.'
+      description: 'Координация команд, контроль сроков, методологии Lean и Agile.',
+      icon: Users,
+      color: 'from-green-500 to-emerald-500'
     },
     {
       title: 'Обучение специалистов',
-      description: 'Разработка программ обучения для BIM-специалистов различных уровней. Практические воркшопы и корпоративное обучение.'
+      description: 'Программы для BIM-команд, практические воркшопы, корпоративное обучение.',
+      icon: GraduationCap,
+      color: 'from-yellow-500 to-orange-500'
     },
     {
       title: 'Стандартизация процессов',
-      description: 'Создание BIM-стандартов, регламентов и библиотек компонентов. Разработка внутренних нормативных документов.'
+      description: 'BIM-стандарты, регламенты, библиотеки компонентов.',
+      icon: FileCode,
+      color: 'from-indigo-500 to-purple-500'
     },
     {
       title: 'Технологический стек',
-      description: 'Экспертиза в Revit, Navisworks, BIM 360, Dynamo. Интеграция с ERP и системами управления строительством.'
+      description: 'Revit, Navisworks, BIM 360, Dynamo. Интеграция с ERP-системами.',
+      icon: Layers,
+      color: 'from-teal-500 to-cyan-500'
     },
     {
       title: 'Анализ данных',
-      description: 'Извлечение и обработка данных из BIM-моделей. Создание аналитических отчетов для принятия управленческих решений.'
+      description: 'Обработка данных из моделей, аналитические отчеты для управления.',
+      icon: BarChart3,
+      color: 'from-pink-500 to-rose-500'
     },
     {
       title: 'Коллаборация',
-      description: 'Настройка эффективного взаимодействия между проектировщиками, подрядчиками и заказчиками. CDE и облачные платформы.'
+      description: 'CDE-платформы, настройка взаимодействия команд, облачные решения.',
+      icon: Cloud,
+      color: 'from-sky-500 to-blue-500'
     },
     {
       title: 'Инновации в AEC',
-      description: 'Внедрение передовых технологий: AR/VR, IoT, машинное обучение. Оценка и пилотирование новых решений.'
+      description: 'AR/VR, IoT, машинное обучение. Оценка и пилотирование технологий.',
+      icon: Lightbulb,
+      color: 'from-amber-500 to-yellow-500'
     }
   ];
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
+
   return (
-    <section id="expertise" className="py-16 md:py-20 lg:py-24 bg-accent/30" ref={ref as any}>
+    <section id="expertise" className="py-16 md:py-20 lg:py-24 bg-accent/30 overflow-hidden" ref={ref as any}>
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-12">
         <motion.div
-          className="mb-12"
+          className="mb-12 flex items-center justify-between"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, ease: [0.21, 0.45, 0.27, 0.9] }}
         >
-          <h2 className="text-[28px] md:text-[32px] lg:text-[36px] font-semibold tracking-tight mb-3">
-            Спектр экспертности
-          </h2>
-          <div className="w-12 h-0.5 bg-primary"></div>
+          <div>
+            <h2 className="text-[28px] md:text-[32px] lg:text-[36px] font-semibold tracking-tight mb-3">
+              Спектр экспертности
+            </h2>
+            <div className="w-12 h-0.5 bg-primary"></div>
+          </div>
+
+          {/* Custom Navigation Arrows */}
+          <div className="hidden md:flex gap-2">
+            <button
+              onClick={() => sliderRef.current?.slickPrev()}
+              className="w-10 h-10 rounded-xl bg-card border border-border hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => sliderRef.current?.slickNext()}
+              className="w-10 h-10 rounded-xl bg-card border border-border hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-          {expertiseAreas.map((area, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.1 + index * 0.05,
-                ease: [0.21, 0.45, 0.27, 0.9]
-              }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="bg-card border border-border rounded-2xl p-6 hover:shadow-md transition-shadow duration-300"
-            >
-              <h3 className="text-[16px] font-semibold mb-2.5 tracking-tight">
-                {area.title}
-              </h3>
-              <p className="text-[14px] text-foreground/70 leading-relaxed">
-                {area.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="expertise-carousel"
+        >
+          <Slider ref={sliderRef} {...settings}>
+            {expertiseAreas.map((area, index) => {
+              const Icon = area.icon;
+              return (
+                <div key={index} className="px-2.5">
+                  <div className="group bg-card border border-border rounded-2xl p-6 hover:shadow-lg transition-all duration-300 relative overflow-hidden h-[240px] flex flex-col">
+                    {/* Gradient background on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                    
+                    {/* Icon */}
+                    <div className={`relative w-12 h-12 rounded-xl bg-gradient-to-br ${area.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    
+                    <h3 className="relative text-[16px] font-semibold mb-2.5 tracking-tight">
+                      {area.title}
+                    </h3>
+                    <p className="relative text-[14px] text-foreground/70 leading-relaxed">
+                      {area.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </Slider>
+        </motion.div>
       </div>
+
+      <style>{`
+        .expertise-carousel .slick-dots {
+          bottom: -40px;
+        }
+        .expertise-carousel .slick-dots li button:before {
+          font-size: 10px;
+          color: hsl(var(--primary));
+          opacity: 0.3;
+        }
+        .expertise-carousel .slick-dots li.slick-active button:before {
+          opacity: 1;
+          color: hsl(var(--primary));
+        }
+        .expertise-carousel .slick-slide > div {
+          height: 100%;
+        }
+      `}</style>
     </section>
   );
 }
