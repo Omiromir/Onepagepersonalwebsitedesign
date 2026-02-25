@@ -29,17 +29,17 @@ export function Footer() {
           transition={{ duration: 0.6, ease: [0.21, 0.45, 0.27, 0.9] }}
         >
           {/* Brand */}
-          <div className="md:col-span-5">
+          <div className="md:col-span-7">
             <div className="text-lg font-semibold mb-3">
               Даурен Токмагамбетов
             </div>
-            <p className="text-[14px] text-foreground/60 leading-relaxed max-w-[400px]">
+            <p className="text-[14px] text-foreground/60 leading-relaxed max-w-[500px]">
               BIM/AEC эксперт. Технологический консалтинг и стратегическое развитие в области цифровизации строительства.
             </p>
           </div>
 
           {/* Navigation */}
-          <div className="md:col-span-4">
+          <div className="md:col-span-5">
             <div className="text-[14px] font-semibold mb-4">Навигация</div>
             <nav className="flex flex-col gap-2.5">
               <button 
@@ -61,56 +61,24 @@ export function Footer() {
                 Проекты
               </button>
               <button 
-                onClick={() => scrollToSection('contacts')}
+                onClick={() => scrollToSection('speaking')}
                 className="text-[14px] text-foreground/60 hover:text-foreground text-left transition-colors"
               >
-                Контакты
+                Публичная деятельность
               </button>
             </nav>
-          </div>
-
-          {/* Contact info */}
-          <div className="md:col-span-3">
-            <div className="text-[14px] font-semibold mb-4">Связь</div>
-            <div className="flex flex-col gap-2.5">
-              <a 
-                href="mailto:contact@example.com"
-                className="text-[14px] text-foreground/60 hover:text-foreground transition-colors"
-              >
-                Email
-              </a>
-              <a 
-                href="https://t.me/username"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[14px] text-foreground/60 hover:text-foreground transition-colors"
-              >
-                Telegram
-              </a>
-              <a 
-                href="https://wa.me/1234567890"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[14px] text-foreground/60 hover:text-foreground transition-colors"
-              >
-                WhatsApp
-              </a>
-            </div>
           </div>
         </motion.div>
 
         {/* Bottom bar */}
         <motion.div
-          className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4"
+          className="pt-8 border-t border-border"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.21, 0.45, 0.27, 0.9] }}
         >
-          <p className="text-[13px] text-foreground/50">
+          <p className="text-[13px] text-foreground/50 text-center md:text-left">
             © {currentYear} Даурен Токмагамбетов. Все права защищены.
-          </p>
-          <p className="text-[13px] text-foreground/50">
-            Сайт создан с использованием современных технологий
           </p>
         </motion.div>
       </div>

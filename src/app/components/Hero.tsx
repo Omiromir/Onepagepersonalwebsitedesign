@@ -1,11 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 
-interface HeroProps {
-  onContactClick: () => void;
-}
-
-export function Hero({ onContactClick }: HeroProps) {
+export function Hero() {
   const badges = [
     'BIM-моделирование',
     'Стратегия цифровизации',
@@ -77,27 +73,18 @@ export function Hero({ onContactClick }: HeroProps) {
               ))}
             </motion.div>
 
-            {/* CTA Buttons */}
+            {/* CTA Button */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-3"
             >
               <motion.button
-                onClick={onContactClick}
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center h-12 px-6 rounded-xl bg-primary text-primary-foreground hover:opacity-90 transition-opacity text-[15px] font-medium"
               >
-                Связаться
+                Изучить мой опыт
                 <ArrowRight className="ml-2 w-4 h-4" />
-              </motion.button>
-              <motion.button
-                onClick={() => document.getElementById('speaking')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center h-12 px-6 rounded-xl border border-border hover:bg-accent transition-colors text-[15px] font-medium"
-              >
-                Пригласить спикером
               </motion.button>
             </motion.div>
           </motion.div>

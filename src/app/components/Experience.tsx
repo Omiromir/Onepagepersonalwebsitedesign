@@ -7,23 +7,19 @@ export function Experience() {
   const roles = [
     {
       text: 'Стратегия цифровой трансформации и технологического развития',
-      icon: Target,
-      color: 'from-blue-500 to-cyan-500'
+      icon: Target
     },
     {
       text: 'Внедрение BIM-процессов, координация команд',
-      icon: Rocket,
-      color: 'from-purple-500 to-pink-500'
+      icon: Rocket
     },
     {
       text: 'Разработка стандартов, методологий, обучающих программ',
-      icon: BookOpen,
-      color: 'from-orange-500 to-red-500'
+      icon: BookOpen
     },
     {
       text: 'Консалтинг по оптимизации проектных процессов',
-      icon: Lightbulb,
-      color: 'from-green-500 to-emerald-500'
+      icon: Lightbulb
     }
   ];
 
@@ -80,12 +76,12 @@ export function Experience() {
                     whileHover={{ x: 4, transition: { duration: 0.2 } }}
                   >
                     {/* Background gradient on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${role.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     <div className="relative flex items-start gap-4">
                       {/* Icon */}
-                      <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${role.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className="w-6 h-6 text-white" />
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="w-6 h-6 text-primary-foreground" />
                       </div>
                       
                       {/* Text */}

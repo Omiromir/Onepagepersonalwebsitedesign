@@ -48,29 +48,16 @@ export function Header() {
             <button onClick={() => scrollToSection('speaking')} className="text-[14px] text-foreground/70 hover:text-foreground transition-colors">
               Публичная деятельность
             </button>
-            <button onClick={() => scrollToSection('contacts')} className="text-[14px] text-foreground/70 hover:text-foreground transition-colors">
-              Контакты
-            </button>
           </nav>
 
-          {/* Actions */}
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => scrollToSection('contacts')}
-              className="hidden lg:inline-flex items-center justify-center px-5 h-10 rounded-xl bg-primary text-primary-foreground hover:opacity-90 transition-opacity text-[14px] font-medium"
-            >
-              Связаться
-            </button>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden flex items-center justify-center w-9 h-9 rounded-lg hover:bg-accent transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden flex items-center justify-center w-9 h-9 rounded-lg hover:bg-accent transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </div>
 
@@ -93,17 +80,6 @@ export function Header() {
             <button onClick={() => scrollToSection('speaking')} className="text-left text-[15px] py-2 hover:text-foreground/70 transition-colors">
               Публичная деятельность
             </button>
-            <button onClick={() => scrollToSection('contacts')} className="text-left text-[15px] py-2 hover:text-foreground/70 transition-colors">
-              Контакты
-            </button>
-            <div className="pt-4 border-t border-border">
-              <button
-                onClick={() => scrollToSection('contacts')}
-                className="w-full h-11 rounded-xl bg-primary text-primary-foreground text-[15px] font-medium"
-              >
-                Связаться
-              </button>
-            </div>
           </nav>
         </div>
       )}

@@ -14,62 +14,52 @@ export function Expertise() {
     {
       title: 'BIM-моделирование',
       description: 'Координация информационных моделей, стандартизация процессов, контроль качества.',
-      icon: Cuboid,
-      color: 'from-blue-500 to-cyan-500'
+      icon: Cuboid
     },
     {
       title: 'Цифровая трансформация',
       description: 'Стратегия внедрения технологий, аудит процессов, roadmap развития.',
-      icon: Target,
-      color: 'from-purple-500 to-pink-500'
+      icon: Target
     },
     {
       title: 'Консалтинг и аудит',
       description: 'Оценка BIM-процессов, оптимизация workflow, внедрение стандартов.',
-      icon: FileSearch,
-      color: 'from-orange-500 to-red-500'
+      icon: FileSearch
     },
     {
       title: 'Управление проектами',
       description: 'Координация команд, контроль сроков, методологии Lean и Agile.',
-      icon: Users,
-      color: 'from-green-500 to-emerald-500'
+      icon: Users
     },
     {
       title: 'Обучение специалистов',
       description: 'Программы для BIM-команд, практические воркшопы, корпоративное обучение.',
-      icon: GraduationCap,
-      color: 'from-yellow-500 to-orange-500'
+      icon: GraduationCap
     },
     {
       title: 'Стандартизация процессов',
       description: 'BIM-стандарты, регламенты, библиотеки компонентов.',
-      icon: FileCode,
-      color: 'from-indigo-500 to-purple-500'
+      icon: FileCode
     },
     {
       title: 'Технологический стек',
       description: 'Revit, Navisworks, BIM 360, Dynamo. Интеграция с ERP-системами.',
-      icon: Layers,
-      color: 'from-teal-500 to-cyan-500'
+      icon: Layers
     },
     {
       title: 'Анализ данных',
       description: 'Обработка данных из моделей, аналитические отчеты для управления.',
-      icon: BarChart3,
-      color: 'from-pink-500 to-rose-500'
+      icon: BarChart3
     },
     {
       title: 'Коллаборация',
       description: 'CDE-платформы, настройка взаимодействия команд, облачные решения.',
-      icon: Cloud,
-      color: 'from-sky-500 to-blue-500'
+      icon: Cloud
     },
     {
       title: 'Инновации в AEC',
       description: 'AR/VR, IoT, машинное обучение. Оценка и пилотирование технологий.',
-      icon: Lightbulb,
-      color: 'from-amber-500 to-yellow-500'
+      icon: Lightbulb
     }
   ];
 
@@ -83,19 +73,24 @@ export function Expertise() {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
+    centerMode: false,
+    variableWidth: false,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          centerMode: false,
         }
       },
       {
         breakpoint: 640,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          centerMode: false,
+          centerPadding: '0px'
         }
       }
     ]
@@ -146,12 +141,12 @@ export function Expertise() {
               return (
                 <div key={index} className="px-2.5">
                   <div className="group bg-card border border-border rounded-2xl p-6 hover:shadow-lg transition-all duration-300 relative overflow-hidden h-[240px] flex flex-col">
-                    {/* Gradient background on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                    {/* Background on hover */}
+                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     {/* Icon */}
-                    <div className={`relative w-12 h-12 rounded-xl bg-gradient-to-br ${area.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className="w-6 h-6 text-white" />
+                    <div className="relative w-12 h-12 rounded-xl bg-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-6 h-6 text-primary-foreground" />
                     </div>
                     
                     <h3 className="relative text-[16px] font-semibold mb-2.5 tracking-tight">
@@ -183,6 +178,21 @@ export function Expertise() {
         }
         .expertise-carousel .slick-slide > div {
           height: 100%;
+        }
+        .expertise-carousel .slick-list {
+          margin: 0 -10px;
+        }
+        .expertise-carousel .slick-slide {
+          padding: 0 10px;
+        }
+        @media (max-width: 640px) {
+          .expertise-carousel .slick-list {
+            margin: 0;
+            overflow: hidden;
+          }
+          .expertise-carousel .slick-slide {
+            padding: 0;
+          }
         }
       `}</style>
     </section>

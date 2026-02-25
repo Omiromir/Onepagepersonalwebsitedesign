@@ -8,48 +8,31 @@ export function Speaking() {
     {
       text: 'Спикер конференций и форумов по BIM и цифровизации',
       icon: Mic2,
-      color: 'from-blue-500 to-cyan-500',
       count: '15+'
     },
     {
       text: 'Мастер-классы и воркшопы для AEC-индустрии',
       icon: Users2,
-      color: 'from-purple-500 to-pink-500',
       count: '25+'
     },
     {
       text: 'Эксперт панельных дискуссий и круглых столов',
       icon: Award,
-      color: 'from-orange-500 to-red-500',
       count: '10+'
     },
     {
       text: 'Ментор Construction Tech стартапов',
       icon: Sparkles,
-      color: 'from-green-500 to-emerald-500',
       count: '8'
     },
     {
       text: 'Публикации в профильных изданиях',
       icon: BookOpen,
-      color: 'from-amber-500 to-yellow-500',
       count: '20+'
     }
   ];
 
-  const scrollToContacts = () => {
-    const element = document.getElementById('contacts');
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+
 
   return (
     <section id="speaking" className="py-16 md:py-20 lg:py-24 bg-accent/30" ref={ref as any}>
@@ -91,13 +74,13 @@ export function Speaking() {
                     whileHover={{ y: -4, transition: { duration: 0.2 } }}
                   >
                     {/* Background gradient on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${activity.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     <div className="relative">
                       <div className="flex items-start gap-3 mb-3">
                         {/* Icon */}
-                        <div className={`flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br ${activity.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                          <Icon className="w-5 h-5 text-white" />
+                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <Icon className="w-5 h-5 text-primary-foreground" />
                         </div>
                         
                         {/* Count badge */}
@@ -125,10 +108,10 @@ export function Speaking() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.21, 0.45, 0.27, 0.9] }}
           >
-            <div className="sticky top-24 bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/20 rounded-2xl p-6 md:p-8">
-              <div className="mb-6">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center mb-4">
-                  <Mic2 className="w-7 h-7 text-white" />
+            <div className="sticky top-24 bg-primary/10 border border-primary/20 rounded-2xl p-6 md:p-8">
+              <div>
+                <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center mb-4">
+                  <Mic2 className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <h3 className="text-[20px] font-semibold mb-2">
                   Приглашение на выступление
@@ -137,16 +120,6 @@ export function Speaking() {
                   Готов выступить на вашей конференции или провести воркшоп для вашей команды.
                 </p>
               </div>
-
-              <motion.button
-                onClick={scrollToContacts}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full inline-flex items-center justify-center h-12 px-6 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-[15px] font-medium shadow-lg hover:shadow-xl"
-              >
-                Связаться со мной
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </motion.button>
             </div>
           </motion.div>
         </div>
